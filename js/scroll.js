@@ -8,19 +8,3 @@ const paintingSectionsInRandomColor = () => {
 };
 
 paintingSectionsInRandomColor();
-
-const onWindowScroll = event => {
-  console.log(window.pageYOffset);
-
-  if (window.pageYOffset >= 800 && window.pageYOffset < 1200) {
-    const sectionEl = document.querySelector('.js-animated-section');
-
-    sectionEl.classList.add('animated');
-
-    window.removeEventListener('scroll', throttledOnWindowScroll);
-  }
-};
-
-const throttledOnWindowScroll = _.throttle(onWindowScroll, 300);
-
-window.addEventListener('scroll', throttledOnWindowScroll);

@@ -41,34 +41,3 @@ const createCountryCard = ({ name, capital, population, area } = {}) => {
      <li class="country-card__item"><strong>Население:</strong> ${population}</li>
      <li class="country-card__item"><strong>Площадь:</strong> ${area}км<sup>2</sup></li>`;
 };
-
-const onSearchInputElInput = event => {
-  console.log('Hi');
-
-  const { target } = event;
-
-  const query = target.value.toLowerCase().trim();
-
-  if (query === '') {
-    outputError.textContent = '';
-    countryCardEl.innerHTML = '';
-
-    return;
-  }
-
-  const country = countries.find((el, idx, arr) => {
-    return el.name.toLowerCase() === query;
-  });
-
-  if (country === undefined) {
-    outputError.textContent = 'Такої країни не знайдено!';
-    countryCardEl.innerHTML = '';
-
-    return;
-  }
-
-  countryCardEl.innerHTML = createCountryCard(country);
-  outputError.textContent = '';
-};
-
-searchInputEl.addEventListener('input', _.debounce(onSearchInputElInput, 300));
